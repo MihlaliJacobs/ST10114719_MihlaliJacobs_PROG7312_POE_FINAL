@@ -21,9 +21,9 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
             serviceRequests = new List<ServiceRequest>();
 
             // Populate the priority queue with initial requests
-            serviceRequestQueue.Insert(new ServiceRequest("Downtown", "Road Repair", "Fix pothole on Main Street.", "Pending", 3)); 
+            serviceRequestQueue.Insert(new ServiceRequest("Downtown", "Road Repair", "Fix pothole on Main Street.", "Pending", 3));
             serviceRequestQueue.Insert(new ServiceRequest("Seaside", "Waste Management", "Clear overflowing bins.", "Pending", 2));
-            serviceRequestQueue.Insert(new ServiceRequest("Hilltop", "Street Lighting", "Fix broken lights.", "Processing", 1)); 
+            serviceRequestQueue.Insert(new ServiceRequest("Hilltop", "Street Lighting", "Fix broken lights.", "Processing", 1));
         }
 
         /// Populates the binary tree with service requests.
@@ -44,8 +44,8 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
             while (serviceRequestQueue.Count > 0)
             {
                 var request = serviceRequestQueue.ExtractMax();
-                lbServiceReq.Items.Add($"Location: {request.Location}, Category: {request.Category}, Time Sensitivity: {request.TimeSensitivity}");
-                tempQueue.Insert(request); 
+                lbServiceReq.Items.Add($"Location: {request.Location}, Category: {request.Category}, Priority Level: {request.PriorityLevel}");
+                tempQueue.Insert(request);
             }
 
             serviceRequestQueue = tempQueue;
@@ -87,12 +87,10 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
 
             var newRequest = new ServiceRequest(location, category, description, "Pending", 1);
 
-            
             serviceRequests.Add(newRequest);
             serviceRequestTree.Insert(newRequest);
             serviceRequestQueue.Insert(newRequest);
 
-            
             txtReqLocation.Clear();
             txtDescription.Clear();
             lbReqCategory.ClearSelected();
@@ -100,28 +98,29 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
             MessageBox.Show("Service request added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-
         /// Displays details of a selected service request.
         private void lbServiceReq_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbServiceReq.SelectedItems.Count > 0)
+            if (lbServiceReq.SelectedItems.Count > 0) // Ensure at least one item is selected
             {
                 foreach (var selectedItem in lbServiceReq.SelectedItems)
                 {
+                    // Find the corresponding ServiceRequest from the list
                     var selectedRequest = serviceRequests.FirstOrDefault(req =>
                         selectedItem.ToString().Contains($"Location: {req.Location}") &&
                         selectedItem.ToString().Contains($"Category: {req.Category}") &&
-                        selectedItem.ToString().Contains($"Priority level: {req.TimeSensitivity}"));
+                        selectedItem.ToString().Contains($"Priority Level: {req.PriorityLevel}"));
 
                     if (selectedRequest != null)
                     {
+                        // Display the details of the selected service request
                         MessageBox.Show(
                             $"Details:\n\n" +
                             $"Location: {selectedRequest.Location}\n" +
                             $"Category: {selectedRequest.Category}\n" +
                             $"Description: {selectedRequest.Description}\n" +
                             $"Status: {selectedRequest.Status}\n" +
-                            $"Priority level: {selectedRequest.TimeSensitivity}",
+                            $"Priority Level: {selectedRequest.PriorityLevel}",
                             "Service Request Details",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
@@ -131,7 +130,6 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
             }
         }
     }
-
 
     /// Represents a node in a binary tree.
     public class BinaryTreeNode<T> where T : IComparable<T>
@@ -176,7 +174,6 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
         }
     }
 
- 
     /// Represents a service request.
     public class ServiceRequest : IComparable<ServiceRequest>
     {
@@ -184,15 +181,15 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
         public string Category { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
-        public int TimeSensitivity { get; set; }
+        public int PriorityLevel { get; set; }
 
-        public ServiceRequest(string location, string category, string description, string status = "Pending", int timeSensitivity = 1)
+        public ServiceRequest(string location, string category, string description, string status = "Pending", int priorityLevel = 1)
         {
             Location = location;
             Category = category;
             Description = description;
             Status = status;
-            TimeSensitivity = timeSensitivity;
+            PriorityLevel = priorityLevel;
         }
 
         public override string ToString()
@@ -202,10 +199,9 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
 
         public int CompareTo(ServiceRequest other)
         {
-            return other.TimeSensitivity.CompareTo(TimeSensitivity);
+            return other.PriorityLevel.CompareTo(PriorityLevel);
         }
     }
-
 
     /// Priority queue implementation.
     public class PriorityQueue<T> where T : IComparable<T>
@@ -279,5 +275,6 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
         }
     }
 }
+
 
 

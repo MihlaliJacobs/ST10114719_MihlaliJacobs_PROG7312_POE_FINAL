@@ -62,7 +62,6 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
 
         private void pbServiceReqStatus_Click(object sender, EventArgs e)
         {
-            // Create a new instance of RequestStatus with an empty list or an existing list of service requests
             RequestStatus requestStatusForm = new RequestStatus();
             requestStatusForm.Show();
             this.Hide();
@@ -71,8 +70,12 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
 
         private void label2_Click(object sender, EventArgs e)
 		{
-
+            RequestStatus requestStatusForm = new RequestStatus();
+            requestStatusForm.Show();
+            this.Hide();
+            MessageBox.Show("Welcome to the service request status page.  \n-------------------------------------------------------------------------------\nStay updated with all of your service requests sent to our offices. On this page you will be provided with all the details included in your issue reports. You will also be provided with the status of all requests indicating how far along they have been processed ", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+    
 
        
 
@@ -97,7 +100,10 @@ namespace ST10114719_MihlaliJacobs_POE_PART1
 
         private void lblServiceReqStatus_Click(object sender, EventArgs e)
         {
-      
+            RequestStatus requestStatusForm = new RequestStatus();
+            requestStatusForm.Show();
+            this.Hide();
+            MessageBox.Show("Welcome to the service request status page.  \n-------------------------------------------------------------------------------\nStay updated with all of your service requests sent to our offices. On this page you will be provided with all the details included in your issue reports. You will also be provided with the status of all requests indicating how far along they have been processed ", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
