@@ -5,16 +5,16 @@ The main functions of the application allow the users to:
 -Report issues and request services.
 -Access information about local events and announcements.
 -Recieve updates on the status of their service request.
+ 
 
-In this part the focus was implementing the Events and service announcements. On this page users have 
-access to upcoming and current Events which include details like Name, Date, Location, category and a description
-of the events. The user will also be provided with reccomendations based on the category and date of the event 
-that they selected. The user will also have access to public announcements to keep them informed with details like 
-Name, Date, Category and description. 
-
+How to clone the repository: 
+To clone a GitHub repository using the terminal, 
+first, copy the repository's URL from GitHub by clicking the Code button and choosing the HTTPS, SSH, or GitHub CLI option.
+Open your terminal and navigate to the folder where you want to store the repository using the cd command. 
+Then, run the git clone command followed by the repository URL, e.g. This gives you a local copy of the repository ready for development.
 
 1) To start the application ensure that Visual Studio is installed on your machine.
-2) Navigate into the folder named "ST10114719_MihlaliJacobs_POE_PART1"
+2) Navigate into the folder named "ST10114719_MihlaliJacobs_POE_PART_FINAL"
 3) Find the .sln file extension and double click on it to open it. 
 4) Once it has opened in visual studio click the "Start" button with the green arrow next to it to run the program. 
 5) Wait a few moments for the application startup. 
